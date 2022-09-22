@@ -5,7 +5,27 @@
 int main()
 {
 	glfwInit();
-	std::cout << "Hello world";
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	GLFWwindow* window = glfwCreateWindow(800, 800, "Janela", NULL, NULL);
+
+	if (window == NULL)
+	{
+		std::cerr << "Error while creating window" << std::endl;
+		glfwTerminate();
+		return -1;
+	}
+
+	glfwMakeContextCurrent(window);
+	
+	while (!glfwWindowShouldClose(window))
+	{
+		glfwPollEvents();
+		glfwSwapBuffers(window);
+	}
+	
 
 
 	glfwTerminate();
